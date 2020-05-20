@@ -31,3 +31,7 @@ First take a Stack. Traverse through each node of the linked list and push each 
 Once the traversal & copying is done, iterate through linked list from head node again.
 In each iteration, pop one stack element and compare with node value in respective iteration. It is expected to match stack popped value with node value.
 In case of all matches, its a palindrome. Any one element mismatch makes it not a palindrome.
+
+
+# 20 May coding question
+Write a Java Program which illustrates how to get column properties from ResultSet using ResultSetMetaData? ResultSetMetaData is an object that can be used to get information about the types and properties of the columns in a ResultSet object. Below example shows how to get ResultSet column properties using ResultSetMetaData object.

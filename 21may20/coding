@@ -1,1 +1,494 @@
 
+program 1 (java)
+import java.util.Scanner;
+public class GFG
+{
+// Method to find the waiting time for all
+// processes
+static void findWaitingTime(int processes[], int n,
+int bt[], int wt[], int quantum)
+{
+// Make a copy of burst times bt[] to store remaining
+// burst times.
+int rem_bt[] = new int[n];
+for (int i = 0 ; i < n ; i++)
+rem_bt[i] = bt[i];
+int t = 0; // Current time
+// Keep traversing processes in round robin manner
+// until all of them are not done.
+while(true)
+{
+boolean done = true;
+// Traverse all processes one by one repeatedly
+for (int i = 0 ; i < n; i++)
+{
+// If burst time of a process is greater than 0
+// then only need to process further
+if (rem_bt[i] > 0)
+{
+done = false; // There is a pending process
+
+if (rem_bt[i] > quantum)
+{
+// Increase the value of t i.e. shows
+// how much time a process has been processed
+t += quantum;
+
+// Decrease the burst_time of current process
+// by quantum
+rem_bt[i] -= quantum;
+}
+
+// If burst time is smaller than or equal to
+// quantum. Last cycle for this process
+else
+{
+// Increase the value of t i.e. shows
+// how much time a process has been processed
+t = t + rem_bt[i];
+
+// Waiting time is current time minus time
+// used by this process
+wt[i] = t - bt[i];
+
+// As the process gets fully executed
+// make its remaining burst time = 0
+rem_bt[i] = 0;
+}
+}
+}
+
+// If all processes are done
+if (done == true)
+break;
+}
+}
+
+// Method to calculate turn around time
+static void findTurnAroundTime(int processes[], int n,
+int bt[], int wt[], int tat[])
+{
+// calculating turnaround time by adding
+// bt[i] + wt[i]
+for (int i = 0; i < n ; i++)
+tat[i] = bt[i] + wt[i];}
+
+// Method to calculate average time
+static void findavgTime(int processes[], int n, int bt[],
+int quantum)
+{
+int wt[] = new int[n], tat[] = new int[n];
+int total_wt = 0, total_tat = 0;
+
+// Function to find waiting time of all processes
+findWaitingTime(processes, n, bt, wt, quantum);
+
+// Function to find turn around time for all processes
+findTurnAroundTime(processes, n, bt, wt, tat);
+
+// Display processes along with all details
+System.out.println("Processes " + " Burst time " +
+" Waiting time " + " Turn around time");
+
+// Calculate total waiting time and total turn
+// around time
+for (int i=0; i<n; i++)
+{
+total_wt = total_wt + wt[i];
+total_tat = total_tat + tat[i];
+System.out.println(" " + (i+1) + "\t\t" + bt[i] +"\t " +
+wt[i] +"\t\t " + tat[i]);
+}
+
+System.out.println("Average waiting time = " +
+(float)total_wt / (float)n);
+System.out.println("Average turn around time = " +
+(float)total_tat / (float)n);
+}
+
+// Driver Method
+public static void main(String[] args)
+{
+// process id's
+Scanner s = new Scanner(System.in);
+        System.out.print("Enter no. of processes:");
+      int  n = s.nextInt();
+        int processes[] = new int[n];
+       
+        for(int i = 0; i < n; i++)
+        {
+            processes[i] = i;
+           
+        }
+
+int burst_time[]= new int[n];
+System.out.print("Enter burst time:");
+       
+       
+       
+        for(int i = 0; i < n; i++)
+        {
+            burst_time[i] = s.nextInt();
+           
+        }
+
+// Time quantum
+System.out.print("Enter time quantum:");        
+int quantum = s.nextInt();
+findavgTime(processes, n, burst_time, quantum);
+}
+}
+
+
+
+
+program 2(ssl)
+
+#include <stdio.h>
+#include <stdlib.h>
+ 
+struct node
+{
+    int num;
+    struct node *next;
+};
+ 
+void create(struct node **);
+void reverse(struct node **, int);
+void release(struct node **);
+void display(struct node *);
+ 
+int main()
+{
+    struct node *p = NULL;
+    int n;
+ 
+    printf("Enter data into the list\n");
+    create(&p);
+    printf("Displaying the nodes in the list:\n");
+    display(p);
+    printf("Enter the number N to reverse first N node: ");
+    scanf("%d", &n);
+    printf("Reversing the list...\n");
+    if (n > 1)
+    {
+        reverse(&p, n - 2);
+    }
+    printf("Displaying the reversed list:\n");
+    display(p);
+    release(&p);
+ 
+    return 0;
+}
+ 
+void reverse(struct node **head, int n)
+{
+    struct node *p, *q, *r, *rear;
+ 
+    p = q = r = *head;
+    if (n == 0)
+    {
+        q = q->next;
+        p->next = q->next;
+        q->next = p;
+        *head = q;
+    }
+    else
+    {
+        p = p->next->next;
+        q = q->next;
+        r->next = NULL;
+        rear = r;
+        q->next = r;
+ 
+        while (n > 0 && p != NULL)
+        {
+            r = q;
+            q = p;
+            p = p->next;
+            q->next = r;
+            n--;
+        }
+        *head = q;
+        rear->next = p;
+    }
+}
+ 
+void create(struct node **head)
+{
+    int c, ch;
+    struct node *temp, *rear;
+ 
+    do
+    {
+        printf("Enter number: ");
+        scanf("%d", &c);
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->num = c;
+        temp->next = NULL;
+        if (*head == NULL)
+        {
+            *head = temp;
+        }
+        else
+        {
+            rear->next = temp;
+        }
+        rear = temp;
+        printf("Do you wish to continue [1/0]: ");
+        scanf("%d", &ch);
+    } while (ch != 0);
+    printf("\n");
+}
+ 
+void display(struct node *p)
+{
+    while (p != NULL)
+    {
+        printf("%d\t", p->num);
+        p = p->next;
+    }
+    printf("\n");
+}
+ 
+void release(struct node **head)
+{
+    struct node *temp = *head;
+    *head = (*head)->next;
+    while ((*head) != NULL)
+    {
+        free(temp);
+        temp = *head;
+        (*head) = (*head)->next;
+    }
+}
+
+
+
+
+program 3(ssl )
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node* next;
+};
+
+/* Function to insert a node */
+void insert_elements(struct node** head, int new_data)
+{
+    struct node* new_node = (struct node*) malloc(sizeof(struct node));
+    new_node -> data = new_data;
+    new_node -> next = (*head);
+    (*head) = new_node;
+}
+
+
+/* Function to print nodes */
+void display_list(struct node *node)
+{
+    while (node!=NULL)
+    {
+        printf("%d ", node->data);
+        node = node -> next;
+    }
+}
+
+/* Function to remove duplicates from a sorted list */
+void remove_duplicate_elements(struct node* head)
+{
+    struct node* current = head;
+
+    struct node* next_next;
+
+    if (current == NULL)
+        return;
+
+    while (current -> next != NULL)
+    {
+        /* Compare current node with its next */
+        if (current -> data == current -> next -> data)
+        {
+            next_next = current -> next -> next;
+            free(current -> next);
+            current -> next = next_next;
+        }
+        else
+        {
+            current = current -> next;
+        }
+    }
+}
+
+
+int main()
+{
+    struct node* head = NULL;
+    int n;
+    printf("Enter the total number of elements : ");
+    scanf("%d", &n);
+    printf("\nEnter the sorted linked list : ");
+    int i;
+    for(i = 0; i < n; i++)
+    {
+        int data;
+        scanf("%d", &data);
+        insert_elements(&head, data);
+    }
+
+    printf("\nLinked list before removing duplicates : ");
+    display_list(head);
+    printf("\n");
+
+    remove_duplicate_elements(head);
+
+    printf("\nLinked list after removing duplicates : ");
+    display_list(head);
+    printf("\n");
+
+
+    return 0;
+}
+
+
+program 4(java)
+
+import java.util.Scanner;
+public class GFG
+{
+// Method to find the waiting time for all
+// processes
+static void findWaitingTime(int processes[], int n,
+int bt[], int wt[], int quantum)
+{
+// Make a copy of burst times bt[] to store remaining
+// burst times.
+int rem_bt[] = new int[n];
+for (int i = 0 ; i < n ; i++)
+rem_bt[i] = bt[i];
+int t = 0; // Current time
+// Keep traversing processes in round robin manner
+// until all of them are not done.
+while(true)
+{
+boolean done = true;
+// Traverse all processes one by one repeatedly
+for (int i = 0 ; i < n; i++)
+{
+// If burst time of a process is greater than 0
+// then only need to process further
+if (rem_bt[i] > 0)
+{
+done = false; // There is a pending process
+
+if (rem_bt[i] > quantum)
+{
+// Increase the value of t i.e. shows
+// how much time a process has been processed
+t += quantum;
+
+// Decrease the burst_time of current process
+// by quantum
+rem_bt[i] -= quantum;
+}
+
+// If burst time is smaller than or equal to
+// quantum. Last cycle for this process
+else
+{
+// Increase the value of t i.e. shows
+// how much time a process has been processed
+t = t + rem_bt[i];
+
+// Waiting time is current time minus time
+// used by this process
+wt[i] = t - bt[i];
+
+// As the process gets fully executed
+// make its remaining burst time = 0
+rem_bt[i] = 0;
+}
+}
+}
+
+// If all processes are done
+if (done == true)
+break;
+}
+}
+
+// Method to calculate turn around time
+static void findTurnAroundTime(int processes[], int n,
+int bt[], int wt[], int tat[])
+{
+// calculating turnaround time by adding
+// bt[i] + wt[i]
+for (int i = 0; i < n ; i++)
+tat[i] = bt[i] + wt[i];}
+
+// Method to calculate average time
+static void findavgTime(int processes[], int n, int bt[],
+int quantum)
+{
+int wt[] = new int[n], tat[] = new int[n];
+int total_wt = 0, total_tat = 0;
+
+// Function to find waiting time of all processes
+findWaitingTime(processes, n, bt, wt, quantum);
+
+// Function to find turn around time for all processes
+findTurnAroundTime(processes, n, bt, wt, tat);
+
+// Display processes along with all details
+System.out.println("Processes " + " Burst time " +
+" Waiting time " + " Turn around time");
+
+// Calculate total waiting time and total turn
+// around time
+for (int i=0; i<n; i++)
+{
+total_wt = total_wt + wt[i];
+total_tat = total_tat + tat[i];
+System.out.println(" " + (i+1) + "\t\t" + bt[i] +"\t " +
+wt[i] +"\t\t " + tat[i]);
+}
+
+System.out.println("Average waiting time = " +
+(float)total_wt / (float)n);
+System.out.println("Average turn around time = " +
+(float)total_tat / (float)n);
+}
+
+// Driver Method
+public static void main(String[] args)
+{
+// process id's
+Scanner s = new Scanner(System.in);
+        System.out.print("Enter no. of processes:");
+      int  n = s.nextInt();
+        int processes[] = new int[n];
+       
+        for(int i = 0; i < n; i++)
+        {
+            processes[i] = i;
+           
+        }
+
+int burst_time[]= new int[n];
+System.out.print("Enter burst time:");
+       
+       
+       
+        for(int i = 0; i < n; i++)
+        {
+            burst_time[i] = s.nextInt();
+           
+        }
+
+// Time quantum
+System.out.print("Enter time quantum:");        
+int quantum = s.nextInt();
+findavgTime(processes, n, burst_time, quantum);
+}
+}

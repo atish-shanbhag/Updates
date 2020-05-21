@@ -48,3 +48,9 @@ Test Case 2:
 If a linked listis: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 The value of size k is 3
 Then the linked list looks like: 3 → 2 → 1 → 6 → 5 → 4 → 8 → 7
+
+
+
+# 21 May coding updates
+
+# 1. java program for

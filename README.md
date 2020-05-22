@@ -38,3 +38,12 @@ Reverse a Linked List in groups of given size.
  3.C program to construct a singly linked list by removing duplicate elements in the sorted linked list Sample output: Given list {1,2,2,3,3,3,4} Resulting list{4,3,2,1}
 
  4.java program to implement round robin scheduling algorithm.Calculate AVG WT AND TAT. INPUT:NO OF PROCESSES,BURST TIME AND TIME QUANTUM.
+
+
+# 22 May coding updates
+
+1. C program for implement various operations of Singly Linked List Stack
+
+2. Java program to separate the Individual Characters from a String
+
+3. Java program to separate the Individual Characters from a String

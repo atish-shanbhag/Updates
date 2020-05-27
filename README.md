@@ -44,6 +44,12 @@ Reverse a Linked List in groups of given size.
 
 1. Write a C Program to Generate First N Triangular Numbers (Where N is read from the Keyboard)
 
+# 25 May coding updates
+
+1. Python program to get the count of number of digits.
+
+2. Python program to print the sum of number of given range in the series.
+
 # 26 May coding updates
 1. Write a c program to print all permutation of given string.
 

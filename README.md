@@ -57,10 +57,12 @@ Reverse a Linked List in groups of given size.
 
 3. Write a python program to print all integers range from 0 to 50 excluded the integer shouldn't divisible by 2 and 3.
 
+4. Write a python program to print that given number is a palindrome or not.
+
 # 27 May coding updates
 
 1. Write a C program to sort a given elements one by one in ascending order using sorting algorithm.
 
 2. Write a java program print various operation in binary tree such as inorder Traversal.
 
-4. Write a python program to print that given number is a palindrome or not.
+

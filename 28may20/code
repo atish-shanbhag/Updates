@@ -63,3 +63,81 @@ def droot(num):
         num = str(sum)
         return droot(num)
 print(droot(num))
+
+
+program 3-C
+#include <iostream> 
+using namespace std; 
+
+int find_value(int a[], int n, int k) 
+{ 
+    
+    int sum = 0; 
+  
+   
+    for (int i = 0; i < n; i++) { 
+        sum += a[i]; 
+    } 
+ 
+    return sum % k; 
+} 
+  
+
+int main() 
+{ 
+    int n = 5, k = 3; 
+    int a[] = { 12, 4, 13, 0, 5 }; 
+    cout << find_value(a, n, k); 
+    return 0; 
+}
+
+program 4.1-JSP
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Current Date</title>
+</head>
+<body>
+Today's date: <%= (new java.util.Date()).toLocaleString()%>
+</body>
+</html>
+
+
+program 4.2 -JSP
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>JSP page count</title>
+</head>
+<body>
+<%! static int hit=0; %>
+<%
+if (hit == 0) 
+{
+%>
+<h4><%
+hit ++;
+out.println("Welcome Visitor"); %> <br> 
+<% out.println("Visitor Number : ");%> <%=hit %>.</h4>
+<% 
+hit++;
+}
+else
+{
+%>
+<h4><% out.print("Welcome Visitor, Visitor Number : "); %> <%=hit %>.</h4>
+<%
+hit++;
+}
+%>
+</body>
+</html>

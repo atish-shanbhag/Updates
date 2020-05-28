@@ -65,4 +65,8 @@ Reverse a Linked List in groups of given size.
 
 2. Write a java program print various operation in binary tree such as inorder Traversal.
 
+# 28 May coding updates
 
+1. Write a Java program to get to know the balanced bracket if its balanced it will print true or else print false.
+
+2. Write a Python program to get the digit root of a given number until it becomes single digit.

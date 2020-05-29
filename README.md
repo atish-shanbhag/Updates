@@ -77,3 +77,11 @@ Reverse a Linked List in groups of given size.
 
 4.2 Write a Jsp program to get and print the total no of visitors visited on site.
 
+# 29 May coding updates
+
+1. Write a C program to implement chineese remainder theorem
+
+2. Write a Java program for interleaving of 4 string with 2 string by seperating it.
+
+3. Write a Python program to count no of upper and lower case in a string.
+

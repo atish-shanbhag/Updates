@@ -6,3 +6,30 @@ if(string == string[:: - 1]):
    print("True")
 else:
    print("False")
+
+
+Program -2 C++
+#include <bits/stdc++.h> 
+using namespace std; 
+bool difSquare(int n) 
+{ 
+    if (n % 4 != 2) { 
+        return true; 
+    } 
+  
+    return false; 
+} 
+int main() 
+{ 
+  
+    int n = 3; 
+    if (difSquare(n)) { 
+        cout << "Yes\n"; 
+    } 
+    else { 
+        cout << "No\n"; 
+    } 
+    return 0; 
+} 
+
+Program 3

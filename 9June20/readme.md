@@ -3,6 +3,7 @@ Write a C++ Program to rotate the matrix by K times.
 Rotate the matrix by K times means rotating the given NN matrix to the specified (K) number of times. For example, consider the 33 matrix, which has to be rotated once,
 
 # 2
+Write a Python to implement Perfect Sum Problem
 
 
 # 3

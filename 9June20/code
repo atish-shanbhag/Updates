@@ -1,0 +1,94 @@
+Program 1-C++
+
+#include <iostream> 
+#define M 3 
+#define N 3 
+
+using namespace std; 
+void rotateMatrix(int matrix[][M], int k) { 
+int temp[M]; 
+k = k % M; 
+
+for (int i = 0; i < N; i++) {  
+	for (int t = 0; t < M - k; t++) 
+	temp[t] = matrix[i][t]; 
+	for (int j = M - k; j < M; j++) 
+	matrix[i][j - M + k] = matrix[i][j];  
+	for (int j = k; j < M; j++) 
+	matrix[i][j] = temp[j - k]; 
+} 
+}  
+void displayMatrix(int matrix[][M]) { 
+for (int i = 0; i < N; i++) { 
+	for (int j = 0; j < M; j++) 
+	cout << matrix[i][j] << " "; 
+	cout << endl; 
+} 
+} 
+int main() { 
+int matrix[N][M] = {{10, 20, 30}, 
+					{40, 50, 60}, 
+					{70, 80, 90}}; 
+int k = 1; 
+
+rotateMatrix(matrix, k); 
+displayMatrix(matrix); 
+
+return 0; 
+}
+
+
+Program 2-Python
+
+def sumSubsets(sets, n, target) : 
+
+	x = [0]*len(sets); 
+	j = len(sets) - 1; 
+
+	while (n > 0) : 
+	
+		x[j] = n % 2; 
+		n = n // 2; 
+		j -= 1; 
+	
+	sum = 0; 
+ 
+	for i in range(len(sets)) : 
+		if (x[i] == 1) : 
+			sum += sets[i]; 
+ 
+	if (sum == target) : 
+
+		print("{",end=""); 
+		for i in range(len(sets)) : 
+			if (x[i] == 1) : 
+				print(sets[i],end= ", "); 
+		print("}, ",end=""); 
+
+def findSubsets(arr, K) :  
+	x = pow(2, len(arr)); 
+ 
+	for i in range(1, x) : 
+		sumSubsets(arr, i, K); 
+
+if _name_ == "_main_" : 
+
+	arr = [ 5, 10, 12, 13, 15, 18 ]; 
+	K = 30; 
+	findSubsets(arr, K); 
+  
+Program 3-Java
+public class Main {  
+    public static void main(String[] args) {  
+        String str = "My  Name is Atish  ";  
+        char[] strArray = str.toCharArray();  
+        StringBuffer stringBuffer = new StringBuffer();  
+        for (int i = 0; i < strArray.length; i++) {  
+            if ((strArray[i] != ' ') && (strArray[i] != '\t')) {  
+                stringBuffer.append(strArray[i]);  
+            }  
+        }  
+        String noSpaceStr2 = stringBuffer.toString();  
+        System.out.println(noSpaceStr2);  
+    }  
+}

@@ -1,0 +1,91 @@
+Program 1-c
+#include <stdio.h>
+
+int main()
+{
+    int unit;
+    float amt, total_amt, sur_charge;
+    printf("Enter total units consumed: ");
+    scanf("%d", &unit);
+    if(unit <= 50)
+    {
+        amt = unit * 0.50;
+    }
+    else if(unit <= 150)
+    {
+        amt = 25 + ((unit-50) * 0.75);
+    }
+    else if(unit <= 250)
+    {
+        amt = 100 + ((unit-150) * 1.20);
+    }
+    else
+    {
+        amt = 220 + ((unit-250) * 1.50);
+    }
+    sur_charge = amt * 0.20;
+    total_amt  = amt + sur_charge * 63.2;
+
+    printf("Electricity Bill = Rs. %.2f", total_amt);
+
+    return 0;
+}
+
+Program 2-Java
+public class Main    
+{    
+    public static void main(String[] args) {    
+        int rows, cols, size, count = 0;    
+        int a[][] = {       
+                        {4, 0, 0},    
+                        {0, 5, 0},    
+                        {0, 0, 6}    
+                    };    
+          rows = a.length;    
+        cols = a[0].length;    
+        size = rows * cols;    
+        for(int i = 0; i < rows; i++){    
+            for(int j = 0; j < cols; j++){    
+                if(a[i][j] == 0)    
+                    count++;    
+                }    
+            }    
+                
+        if(count > (size/2))    
+            System.out.println("Given matrix is a sparse matrix");    
+        else    
+            System.out.println("Given matrix is not a sparse matrix");    
+    }    
+}
+
+Program 3-Java
+package ssss;
+import java.util.*;
+public class Main {
+ public static void main(String[] args) {
+  String str1 = "gibblegabbler";
+  System.out.println("The given string is: " + str1);
+  for (int i = 0; i < str1.length(); i++) {
+   boolean unique = true;
+   for (int j = 0; j < str1.length(); j++) {
+    if (i != j && str1.charAt(i) == str1.charAt(j)) {
+     unique = false;
+     break;
+    }
+   }
+   if (unique) {
+    System.out.println("The first non repeated character in String is: " + str1.charAt(i));
+    break;
+   }
+  }
+ }
+}
+
+Program -4 Python
+
+for i in range(65,70):
+    k=i
+    for j in range(65,i+1):
+        print(chr(k),end=" ")
+        k=k+1
+    print()

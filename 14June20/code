@@ -1,0 +1,72 @@
+Program 1-Java
+import java.util.Scanner;
+
+
+public class Main {
+    
+    public static void main(String[] args)
+    {
+        String originalstring="Learning never stops";
+        System.out.println("Original string is >>  "+ originalstring);
+        System.out.println("");
+        System.out.println("Please enter unwanted characters as String");
+        System.out.println("");
+        System.out.println("");
+        Scanner in =new Scanner(System.in);
+        String removecharacterstring=in.nextLine();
+        String output=removeSpecificChars(originalstring, removecharacterstring);
+        System.out.println("");
+        System.out.println("");
+        System.out.print("Output is >>  " );
+        System.out.println(output);
+    }
+    
+    public static String removeSpecificChars(String originalstring ,String removecharacterstring)
+    {
+        char[] orgchararray=originalstring.toCharArray();
+        char[] removechararray=removecharacterstring.toCharArray();
+        int start,end=0;
+        
+        //tempBoolean automatically initialized to false ,size 128 assumes ASCII
+        boolean[]  tempBoolean = new boolean[128];
+        
+        //Set flags for the character to be removed
+        for(start=0;start < removechararray.length;++start)
+        {
+            tempBoolean[removechararray[start]]=true;
+        }
+        
+        //loop through all characters ,copying only if they are flagged to false
+        for(start=0;start < orgchararray.length;++start)
+        {
+            if(!tempBoolean[orgchararray[start]])
+            {
+                orgchararray[end++]=orgchararray[start];
+            }
+        }
+        
+        
+        return new String(orgchararray,0,end);
+    }
+}
+
+
+Program 2-C
+#include <stdio.h>
+int main ()
+{
+	int n = 0, num = 0, count = 0, rev_bits = 0;
+	printf ("Enter the number: ");
+	scanf ("%d", &n);
+	while (n > 0)
+	{
+		rev_bits = rev_bits << 1;
+		if (n & 1 == 1)
+		{
+			rev_bits = rev_bits ^ 1;
+		}
+		n = n >> 1;
+	}
+	printf ("\nThe reversed resultant = %d\n", rev_bits);
+	return 0;
+}
